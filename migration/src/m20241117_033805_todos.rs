@@ -11,6 +11,8 @@ impl MigrationTrait for Migration {
             .create_table(
                 table_auto_tz(Todos::Table)
                     .col(pk_auto(Todos::Id))
+                    .col(string(Todos::Title))
+                    .col(text(Todos::Content))
                     .to_owned(),
             )
             .await
@@ -27,7 +29,6 @@ impl MigrationTrait for Migration {
 enum Todos {
     Table,
     Id,
-    
+    Title,
+    Content,
 }
-
-
